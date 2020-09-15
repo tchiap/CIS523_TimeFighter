@@ -1,6 +1,7 @@
 // Thomas Chiapete
 // CIS 523
 // 15-Sept-2020
+// Time Fighter Android App
 
 package com.raywenderlich.timefighter
 
@@ -81,6 +82,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    // Show some dialog info
     private fun showInfo() {
         val dialogTitle = getString(R.string.aboutTitle)
         val dialogMessage = getString(R.string.aboutMessage)
@@ -90,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         builder.setMessage(dialogMessage)
         builder.create().show()
     }
+
 
     private fun restoreGame() {
         gameScoreTextView.text = getString(R.string.yourScore, score)
@@ -113,6 +116,7 @@ class MainActivity : AppCompatActivity() {
         gameStarted = true
     }
 
+    // Save state before screen orientation change
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
@@ -128,6 +132,7 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onDestroy called.")
     }
 
+    // On reset game
     private fun resetGame() {
         score = 0
         gameScoreTextView.text = getString(R.string.yourScore, score)
@@ -149,6 +154,8 @@ class MainActivity : AppCompatActivity() {
 
         gameStarted = false
     }
+
+    // Increment score
     private fun incrementScore() {
         if(!gameStarted) {
             startGame()
@@ -162,6 +169,7 @@ class MainActivity : AppCompatActivity() {
         gameScoreTextView.startAnimation(blinkAnimation)
     }
 
+    // When the game ends, show a Toast
     private fun endGame() {
         Toast.makeText(this, getString(R.string.gameOverMessage, score), Toast.LENGTH_LONG).show()
         resetGame()
