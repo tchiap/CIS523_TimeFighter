@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity() {
         resetGame()
     }
 
-
+    // Start game
     private fun startGame() {
         countDownTimer.start()
         gameStarted = true
